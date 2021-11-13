@@ -3,36 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager instance = null; // Ёкземпл€р объекта
+    public event Action GameStarted, GameEnded;
 
-    // ћетод, выполн€емый при старте игры
-    void Start()
+    enum TaskList
     {
-        // “еперь, провер€ем существование экземпл€ра
-        if (instance == null)
-        { 
-            // Ёкземпл€р менеджера был найден
-            instance = this; // «адаем ссылку на экземпл€р объекта
-        }
-        else if (instance == this)
-        { 
-            // Ёкземпл€р объекта уже существует на сцене
-            Destroy(gameObject); // ”дал€ем объект
-        }
 
-        // “еперь нам нужно указать, чтобы объект не уничтожалс€
-        // при переходе на другую сцену игры
-        DontDestroyOnLoad(gameObject);
-        
-        // » запускаем собственно инициализатор
-        InitializeManager();
     }
 
-    private void InitializeManager()
+    private void Start()
     {
-        throw new NotImplementedException();
+        
+    }
+
+    public void StartGame()
+    {
+        Timer.Instance.StartTimer();
+        GameStarted?.Invoke();
+    }
+
+    public void EndGame()
+    {
+        GameEnded?.Invoke();
+    }
+
+    private void Update()
+    {
         
     }
 }
