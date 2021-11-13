@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         // Теперь нам нужно указать, чтобы объект не уничтожался
         // при переходе на другую сцену игры
         DontDestroyOnLoad(gameObject);
-
+        
         // И запускаем собственно инициализатор
         InitializeManager();
     }
@@ -33,5 +33,6 @@ public class GameManager : MonoBehaviour
     private void InitializeManager()
     {
         throw new NotImplementedException();
+        
     }
 }
