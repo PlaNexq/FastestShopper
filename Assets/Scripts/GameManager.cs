@@ -1,17 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    public event Action GameStarted, GameEnded;
+
+    enum TaskList
+    {
+
+    }
+
+    private void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartGame()
+    {
+        Timer.Instance.StartTimer();
+        GameStarted?.Invoke();
+    }
+
+    public void EndGame()
+    {
+        GameEnded?.Invoke();
+    }
+
+    private void Update()
     {
         
     }
