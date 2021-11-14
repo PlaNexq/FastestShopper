@@ -5,33 +5,38 @@ using TMPro;
 
 public class Timer : Singleton<Timer>
 {
-    private float m_elapsedTime = 0f;
+    private float m_currentTime = 60f;
     private bool m_timerIsEnabled = false;
-    TextMeshProUGUI m_timerUI = null;
+    private TextMeshProUGUI m_timerUI = null;
 
 
     /// <summary>
     /// The interval in seconds since starting the timer
-    /// </summary>
-    public float ElapsedTime
+    /// </summary> 
+    public float CurrentTime
     {
         get
         {
-            return m_elapsedTime;
+            return m_currentTime;
         }
+    }
+
+    internal override void Awake()
+    {
+        base.Awake();
     }
 
     private void Start()
     {
-       StartTimer();
-       m_timerUI = GameObject.Find("TimerUI").GetComponent< TextMeshProUGUI>();
+        GameManager.Instance.GameEnded += StopTimer;
+        m_timerUI = GameObject.Find("TimerUI").GetComponent<TextMeshProUGUI>();
     }
 
     private void Update()
     {
         if (m_timerIsEnabled)
-            m_elapsedTime += Time.deltaTime;
-        m_timerUI.text = ((int)m_elapsedTime).ToString();
+            m_currentTime -= Time.deltaTime;
+        m_timerUI.text = m_currentTime.ToString("0");
     }
 
     /// <summary>
@@ -55,6 +60,6 @@ public class Timer : Singleton<Timer>
     /// </summary>
     public void ResetTimer()
     {
-        m_elapsedTime = 0f;
+        m_currentTime = 60f;
     }
 }

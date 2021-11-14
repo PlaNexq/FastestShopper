@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        
+        StartGame();
     }
 
     public void StartGame()
@@ -30,6 +30,10 @@ public class GameManager : Singleton<GameManager>
 
     private void Update()
     {
-        
+        Debug.Log(Timer.Instance.CurrentTime);
+        if (Timer.Instance.CurrentTime <= 0)
+        {
+            EndGame();
+        }
     }
 }
