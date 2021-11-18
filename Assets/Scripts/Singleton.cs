@@ -27,6 +27,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     internal virtual void Awake()
     {
+        
         if (m_instance != null)
         {
             Destroy(gameObject);
@@ -34,6 +35,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
 
         m_instance = GetComponent<T>();
+        Debug.Log("Created " + typeof(T).ToString());
 
         DontDestroyOnLoad(gameObject);
 
