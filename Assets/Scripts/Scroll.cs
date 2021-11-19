@@ -21,7 +21,10 @@ public class Scroll : MonoBehaviour
     void Update()
     {
         var mouseScrollDelta = Input.mouseScrollDelta.y;
+
         m_scrollBar.value += mouseScrollDelta * Time.deltaTime * m_scrollSensetivity;
+
+        m_scrollBar.value = Mathf.Clamp01(m_scrollBar.value);
 
     }
 
