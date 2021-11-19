@@ -7,7 +7,6 @@ public class GameManager : Singleton<GameManager>
 {
     public event Action GameStarted, GameEnded;
 
-
     private void Start()
     {
         StartGame();
