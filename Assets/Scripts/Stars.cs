@@ -19,7 +19,6 @@ public class Stars : MonoBehaviour
     private Sprite m_halfStar;
     [SerializeField]
     private Sprite m_emptyStar;
-    private Sprite Hello;
 
     private void Start()
     {

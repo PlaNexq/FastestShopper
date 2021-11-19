@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 2088791964845948263}
   - component: {fileID: 2088791964845948262}
   - component: {fileID: 2088791964845948260}
+  - component: {fileID: 8507908245013110103}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -219,6 +220,25 @@ MonoBehaviour:
   m_fullStar: {fileID: 8903608049025104197, guid: fe42b8e27e625ad4387300fc2a648dc2, type: 3}
   m_halfStar: {fileID: -7678458166956771760, guid: fe42b8e27e625ad4387300fc2a648dc2, type: 3}
   m_emptyStar: {fileID: 1222489850116747820, guid: fe42b8e27e625ad4387300fc2a648dc2, type: 3}
+--- !u!114 &8507908245013110103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088791964845948280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c551a626b5a93d341a662a25e37599b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fakeTextSprites:
+  - {fileID: 21300000, guid: 0a6f8e4a3ddc58f4b866935ddc4ef09c, type: 3}
+  - {fileID: 21300000, guid: fe0d6fb334a5eeb40b8080d2f78c0411, type: 3}
+  - {fileID: 21300000, guid: fec3a134575c60e478323fccc4480f63, type: 3}
+  - {fileID: 21300000, guid: 5fa5fdf59a941d04f91406f6007a6b4f, type: 3}
+  - {fileID: 21300000, guid: 6d56a00037abc24448d91f0dd8899610, type: 3}
+  m_image: {fileID: 2088791964559817934}
 --- !u!1 &2088791965014617517
 GameObject:
   m_ObjectHideFlags: 0
