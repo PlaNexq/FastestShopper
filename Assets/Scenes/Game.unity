@@ -3322,6 +3322,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 19
       objectReference: {fileID: 0}
+    - target: {fileID: 2088791964559817934, guid: 7e133fcb0d8d32b4886eb35fe574e79e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fe0d6fb334a5eeb40b8080d2f78c0411, type: 3}
     - target: {fileID: 2088791964845948280, guid: 7e133fcb0d8d32b4886eb35fe574e79e, type: 3}
       propertyPath: m_Name
       value: Card
