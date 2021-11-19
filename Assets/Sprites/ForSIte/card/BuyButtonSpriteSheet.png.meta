@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6ae9ff1316b90d14aa5ab8b2a81bb0bb
+guid: a1470e0f3fe809d43aa1adebf03131b9
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -102,8 +102,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 27
-        height: 11
+        width: 26
+        height: 10
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,10 +121,10 @@ TextureImporter:
       name: BuyButtonSpriteSheet_Pressed
       rect:
         serializedVersion: 2
-        x: 27
+        x: 26
         y: 0
-        width: 27
-        height: 11
+        width: 26
+        height: 10
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
