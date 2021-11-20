@@ -14,6 +14,7 @@ public class GameManager : Singleton<GameManager>
 
     public void StartGame()
     {
+        GameStarted += Timer.Instance.StartTimer;
         GameStarted?.Invoke();
     }
 
@@ -22,9 +23,13 @@ public class GameManager : Singleton<GameManager>
         GameEnded?.Invoke();
     }
 
+    public void Dialogue()
+    {
+        Debug.Log("What are you doing???");
+    }
+
     private void Update()
     {
-        
         if (Timer.Instance.CurrentTime <= 0)
         {
             EndGame();
