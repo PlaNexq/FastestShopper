@@ -2,14 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 [ExecuteInEditMode]
-public class Stars : MonoBehaviour
+public class ProductSettings : MonoBehaviour
 {
     [SerializeField]
     private float m_stars;
     [SerializeField]
     private int m_numOfStars;
+
+    [SerializeField]
+    private Sprite m_ImageSprite;
+
+    [SerializeField]
+    private string m_text;
 
     [SerializeField]
     private Image[] m_starsImages;
@@ -22,6 +29,8 @@ public class Stars : MonoBehaviour
 
     private void Start()
     {
+        GetComponentInChildren<TextMeshProUGUI>().text = m_text;
+        transform.Find("ProductImage").GetComponent<Image>().sprite = m_ImageSprite;
         for (int i = 0; i < m_numOfStars; ++i)
         {
             m_starsImages[i].enabled = true;
@@ -48,6 +57,6 @@ public class Stars : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
