@@ -29,14 +29,16 @@ public class Timer : Singleton<Timer>
     private void Start()
     {
         GameManager.Instance.GameEnded += StopTimer;
-        m_timerUI = GameObject.Find("TimerUI").GetComponent<TextMeshProUGUI>();
+        //m_timerUI = GameObject.Find("TimerUI").GetComponent<TextMeshProUGUI>();
     }
 
     private void Update()
     {
         if (m_timerIsEnabled)
+        {
             m_currentTime -= Time.deltaTime;
-        m_timerUI.text = m_currentTime.ToString("0");
+            m_timerUI.text = m_currentTime.ToString("0");
+        }
     }
 
     /// <summary>

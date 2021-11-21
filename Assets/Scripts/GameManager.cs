@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -10,7 +11,12 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        StartGame();
+        StartMainMenu();
+    }
+
+    public void StartMainMenu()
+    {
+        AudioManager.Instance.Play("MainMenuMusic");
     }
 
     //Function to test Lists
@@ -76,6 +82,22 @@ public class GameManager : Singleton<GameManager>
     public void Dialogue()
     {
         Debug.Log("What are you doing???");
+    }
+
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void GameQuit()
+    {
+        Application.Quit();
+        Debug.Log("YOU QUIT FROM GAME");
     }
 
     bool isEnd = false;

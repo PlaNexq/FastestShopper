@@ -8,6 +8,7 @@ public class CursorScript : MonoBehaviour
     Sprite cursorIdle, cursorWrong, cursorPointing;
     Vector2 m_offset;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class CursorScript : MonoBehaviour
 
     private void Update()
     {
+
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = mousePosition - new Vector2(-0.25f, 0.25f);
     }
