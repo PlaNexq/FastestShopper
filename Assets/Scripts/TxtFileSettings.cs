@@ -52,7 +52,6 @@ public class TxtFileSettings : MonoBehaviour
         {
             m_components[i].enabled = false;
         }
-        gameObject.SetActive(false);
     }
 
     static public void ChangeColorText(Color color, string productName)

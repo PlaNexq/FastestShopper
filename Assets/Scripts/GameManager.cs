@@ -46,11 +46,15 @@ public class GameManager : Singleton<GameManager>
         GameEnded?.Invoke();
         if (ShoppingList.IsEqual())
         {
-            Debug.Log("You Win");
+            AudioManager.Instance.Play("WinSound");
+            LoadLevel("Win");
         }
         else
         {
+            AudioManager.Instance.Stop("Main");
+            AudioManager.Instance.Play("Main");
             Debug.Log("You Lose");
+            LoadLevel("Lose");
         }
     }
        
@@ -58,15 +62,17 @@ public class GameManager : Singleton<GameManager>
     {
 
         //If product is in shopping list, then we change color of that item to green
-        if (ShoppingList.GetShoppingList().Contains(productName))
+        if (ShoppingList.GetShoppingList().Contains(productName) && !ShoppingList.GetCarList().Contains(productName))
         {
             Color green = new Color32(65, 178, 65, 255);
             TxtFileSettings.ChangeColorText(green, productName);
             ShoppingList.AddElementToCartList(productName);
+            AudioManager.Instance.Play("BuySound");
         }
         else
         {
             Timer.Instance.SetTime(Timer.Instance.CurrentTime - penalty);
+            AudioManager.Instance.Play("WrongSound");
         }
 
         //Debug.Log("Product: " + productName + " was added to cart list");
@@ -89,7 +95,12 @@ public class GameManager : Singleton<GameManager>
 
     public void Dialogue()
     {
-        Debug.Log("What are you doing???");
+        AudioManager.Instance.Play("WrongSound");
+    }
+
+    public void LoadLevel(string levelName)
+    {
+        SceneManager.LoadScene(levelName);
     }
 
     public void LoadNextLevel()

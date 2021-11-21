@@ -13,7 +13,11 @@ public class ShoppingList
             "Hungry Birds", "Wario", "Donkey Kong", "Godzilla Lamp (Only Blue)", 
             "Unicorn Headphones", "Crocodile Watch", "Cap with Flashlight (Blue)",
             "Otamatone", "4-USB Charger", "Cap with Flashlight (Pink)",
-            "Godzilla Lamp (Only Pink)", "Nano Gauntlet", "Unicorn Headphones (GOLD EDITION)"};
+            "Godzilla Lamp (Only Pink)", "Nano Gauntlet", "Unicorn Headphones (GOLD EDITION)",
+            "Jam \"One Minute\"", "Smiley Cactus", "Gorilla Pillow", "Pasta Machine",
+            "Pickle Morty", "Pickle Rick", "Cat Shorts", "Floppa Pillow",  
+            "SCP-173 Kigurumi", "Yo-Yo"
+    };
 
     //List of products that you NEED to buy
     static private List<string> m_shoppingList = new List<string>();
@@ -58,6 +62,11 @@ public class ShoppingList
 
         return m_shoppingList[index];
 
+    }
+
+    static public List<string> GetCarList()
+    {
+        return m_cartList;
     }
 
     static public List<string> GetShoppingList()

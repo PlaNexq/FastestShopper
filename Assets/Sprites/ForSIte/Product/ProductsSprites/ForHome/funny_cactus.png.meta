@@ -1,13 +1,7 @@
 fileFormatVersion: 2
-guid: 457902e39cf182844b724eb2c4343863
+guid: 38fc44aae46225944873132f45fc83a6
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -6859238698133036768
-    second: MainMenuButtonSpriteSheet_Idle
-  - first:
-      213: 4390340670787170065
-    second: MainMenuButtonSpriteSheet_Pressed
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -47,7 +41,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -95,49 +89,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: MainMenuButtonSpriteSheet_Idle
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 84
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 3, z: 5, w: 3}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 021ea20feb61fc0a0800000000000000
-      internalID: -6859238698133036768
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MainMenuButtonSpriteSheet_Pressed
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 3
-        width: 84
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 0, z: 5, w: 3}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 11f283d349f9dec30800000000000000
-      internalID: 4390340670787170065
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
