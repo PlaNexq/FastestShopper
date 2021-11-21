@@ -6,8 +6,8 @@ using UnityEngine;
 public class AudioManager : Singleton<AudioManager>
 {
     public Sound[] sounds;
-    private static float m_music;
-    private static float m_sounds;
+    //private static float m_music;
+    //private static float m_sounds;
 
     internal override void Awake()
     {

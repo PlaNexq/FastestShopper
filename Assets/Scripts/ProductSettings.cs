@@ -18,7 +18,6 @@ public class ProductSettings : MonoBehaviour
     [SerializeField]
     private string m_text;
 
-    [SerializeField]
     private Image[] m_starsImages;
     [SerializeField]
     private Sprite m_fullStar;
@@ -31,8 +30,9 @@ public class ProductSettings : MonoBehaviour
     private void Start()
     {
         //Get referece on text and product sprite
-        GetComponentInChildren<TextMeshProUGUI>().text = m_text;
+        transform.GetComponentInChildren<TextMeshProUGUI>().text = m_text;
         transform.Find("ProductImage").GetComponent<Image>().sprite = m_ImageSprite;
+        m_starsImages = transform.Find("Stars").GetComponentsInChildren<Image>();
 
         //loop for right number of heart output
         for (int i = 0; i < m_numOfStars; ++i)
@@ -60,7 +60,7 @@ public class ProductSettings : MonoBehaviour
 
     public void CallBuy()
     {
-        GameManager.Instance.Buy();
+        GameManager.Instance.Buy(m_text);
     }
 
     // Update is called once per frame
