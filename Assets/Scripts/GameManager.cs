@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
     public event Action GameStarted, GameEnded;
 
-    private ShoppingList shoppingList;
+    private ShoppingList shoppingList = new ShoppingList();
 
     private void Start()
     {
