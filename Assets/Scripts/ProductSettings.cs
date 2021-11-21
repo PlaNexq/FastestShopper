@@ -27,10 +27,14 @@ public class ProductSettings : MonoBehaviour
     [SerializeField]
     private Sprite m_emptyStar;
 
+
     private void Start()
     {
+        //Get referece on text and product sprite
         GetComponentInChildren<TextMeshProUGUI>().text = m_text;
         transform.Find("ProductImage").GetComponent<Image>().sprite = m_ImageSprite;
+
+        //loop for right number of heart output
         for (int i = 0; i < m_numOfStars; ++i)
         {
             m_starsImages[i].enabled = true;
@@ -52,6 +56,11 @@ public class ProductSettings : MonoBehaviour
         {
             m_starsImages[i].enabled = false;
         }
+    }
+
+    public void CallBuy()
+    {
+        GameManager.Instance.Buy();
     }
 
     // Update is called once per frame

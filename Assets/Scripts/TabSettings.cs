@@ -16,8 +16,6 @@ public class TabSettings : MonoBehaviour
     [SerializeField]
     private bool isSelected = false;
 
-    private static GameObject gameManagerClone;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +31,8 @@ public class TabSettings : MonoBehaviour
         }
     }
 
-    public void PlayDialogue()
+    public void CallDialogue()
     {
-        gameManagerClone = GameObject.Find("GameManager");
-        gameManagerClone.GetComponent<GameManager>().Dialogue();
+        GameManager.Instance.Dialogue();
     }
 }
