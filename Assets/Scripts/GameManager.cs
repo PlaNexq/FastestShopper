@@ -7,7 +7,6 @@ public class GameManager : Singleton<GameManager>
 {
     public event Action GameStarted, GameEnded;
 
-    private ShoppingList shoppingList = new ShoppingList();
 
     private void Start()
     {
@@ -18,7 +17,6 @@ public class GameManager : Singleton<GameManager>
     {
         GameStarted += Timer.Instance.StartTimer;
         GameStarted?.Invoke();
-        shoppingList.Initialize();
     }
 
     public void EndGame()

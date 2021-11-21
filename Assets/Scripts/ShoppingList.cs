@@ -6,29 +6,43 @@ using System;
 public class ShoppingList
 {
     //List of all product that you CAN buy
-    static private string[] listOfProducts = { "Grand Dad", "Mario", "Win98 NES", 
+    static int initializeTimesCount = 0;
+
+    static private List<string> listOfProducts = new List<string>{ "Grand Dad", "Mario", "Win98 NES", 
             "Panda Prince", "Konkey Dong", "Grand Dad", "Sonic the Hedgeghog", 
             "Hungry Birds", "Wario", "Donkey Kong", "Godzilla Lamp (Only Blue)", 
-            "Unicorn Headphones", "Crocodile Watch", "cap with Flashlight (Blue",
+            "Unicorn Headphones", "Crocodile Watch", "Cap with Flashlight (Blue)",
             "Otamatone", "4-USB Charger", "Cap with Flashlight (Pink)",
             "Godzilla Lamp (Only Pink)", "Nano Gauntlet", "Unicorn Headphones (GOLD EDITION)"};
-    
+
     //List of product that you NEED to buy
-    static private Dictionary<string, bool> shoppingList = new Dictionary<string, bool>();
+    static private string[] m_shoppingList;
 
-
-    public void Initialize()
+    static public void Initialize(int numberOfItems)
     {
-        shoppingList.Add("Grand Dad", false);
-    }
-    public bool GetStatusOfItem(string item)
-    {
-        
-        if (!shoppingList.ContainsKey(item))
+        initializeTimesCount++;
+        if (initializeTimesCount > 1)
         {
-            
+            Debug.LogError(typeof(ShoppingList).Name + " was initialized more than once, check your code!");
         }
-        return true;
+
+        m_shoppingList = new string[numberOfItems];
+        for (int i = 0; i < numberOfItems; ++i)
+        {
+            int randomNumber = UnityEngine.Random.Range(0, listOfProducts.Count - 1);
+            m_shoppingList[i] = listOfProducts[randomNumber];
+            listOfProducts.RemoveAt(randomNumber);
+
+            Debug.Log("Item added: " + m_shoppingList[i]);
+
+        }
+    }
+
+    static public string GetElementValue(int index)
+    {
+
+        return m_shoppingList[index];
 
     }
+
 }
