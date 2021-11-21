@@ -8,7 +8,8 @@ public class GameManager : Singleton<GameManager>
 {
     public event Action GameStarted, GameEnded;
 
-
+    [SerializeField]
+    private float penalty = 3f;
     private void Start()
     {
         StartMainMenu();
@@ -34,8 +35,10 @@ public class GameManager : Singleton<GameManager>
 
     public void StartGame()
     {
+        LoadNextLevel();
         GameStarted += Timer.Instance.StartTimer;
         GameStarted?.Invoke();
+        AudioManager.Instance.Stop("MainMenuMusic");
         AudioManager.Instance.Play("Main");
     }
     public void EndGame()
@@ -59,12 +62,17 @@ public class GameManager : Singleton<GameManager>
         {
             Color green = new Color32(65, 178, 65, 255);
             TxtFileSettings.ChangeColorText(green, productName);
+            ShoppingList.AddElementToCartList(productName);
+        }
+        else
+        {
+            Timer.Instance.SetTime(Timer.Instance.CurrentTime - penalty);
         }
 
-        ShoppingList.AddElementToCartList(productName);
         //Debug.Log("Product: " + productName + " was added to cart list");
     }
 
+    /*
     public void DeleteProduct(string productName)
     {
         
@@ -76,7 +84,7 @@ public class GameManager : Singleton<GameManager>
         ShoppingList.DeleteElementFromCartList(productName);
         //Debug.Log("Product: " + productName + " was deleted from cart list");
     }
-
+    */
     
 
     public void Dialogue()
@@ -89,9 +97,9 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void RestartLevel()
+    public void LoadPreviousLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
     public void GameQuit()
