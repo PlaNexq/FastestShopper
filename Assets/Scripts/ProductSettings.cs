@@ -26,13 +26,22 @@ public class ProductSettings : MonoBehaviour
     [SerializeField]
     private Sprite m_emptyStar;
 
+    private GameObject deleteButton, buyButton;
+
 
     private void Start()
     {
-        //Get referece on text and product sprite
+        //Get reference on text and product sprite
         transform.GetComponentInChildren<TextMeshProUGUI>().text = m_text;
         transform.Find("ProductImage").GetComponent<Image>().sprite = m_ImageSprite;
         m_starsImages = transform.Find("Stars").GetComponentsInChildren<Image>();
+
+        //Get reference on buttons
+        buyButton = transform.Find("BuyButton").gameObject;
+        deleteButton = transform.Find("DeleteButton").gameObject;
+
+        //Inactive DeleteButton
+        deleteButton.SetActive(false);
 
         //loop for right number of heart output
         for (int i = 0; i < m_numOfStars; ++i)
@@ -61,6 +70,15 @@ public class ProductSettings : MonoBehaviour
     public void CallBuy()
     {
         GameManager.Instance.Buy(m_text);
+        buyButton.SetActive(false);
+        deleteButton.SetActive(true);
+    }
+
+    public void CallDelete()
+    {
+        GameManager.Instance.DeleteProduct(m_text);
+        deleteButton.SetActive(false);
+        buyButton.SetActive(true);
     }
 
     // Update is called once per frame

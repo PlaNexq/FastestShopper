@@ -9,7 +9,7 @@ public class ShoppingList
 
     //List of all products that you CAN buy
     static private List<string> m_listOfProducts = new List<string>{ "Grand Dad", "Mario", "Win98 NES", 
-            "Panda Prince", "Konkey Dong", "Sonic the Hedgeghog", 
+            "Panda Prince", "Konkey Dong", "Sonic the Hedgehog", "Blue Hedgehog", 
             "Hungry Birds", "Wario", "Donkey Kong", "Godzilla Lamp (Only Blue)", 
             "Unicorn Headphones", "Crocodile Watch", "Cap with Flashlight (Blue)",
             "Otamatone", "4-USB Charger", "Cap with Flashlight (Pink)",
@@ -42,7 +42,10 @@ public class ShoppingList
 
     static public void AddElementToCartList(string productName)
     {
-        m_cartList.Add(productName);
+        if (!m_cartList.Contains(productName))
+        {
+            m_cartList.Add(productName);
+        }
     }
 
     static public void DeleteElementFromCartList(string productName)
@@ -62,6 +65,23 @@ public class ShoppingList
         return m_shoppingList;
     }
 
+    static public bool IsEqual()
+    {
+        if(m_cartList.Count != m_shoppingList.Count)
+        {
+            return false;
+        }
+            m_cartList.Sort();
+            m_shoppingList.Sort();
+        for (int i = 0; i < m_cartList.Count; ++i)
+        {
+            if (m_cartList[i] != m_shoppingList[i])
+            {
+                return false;
+            }
+        }
+        return true;
 
+    }
 
 }
