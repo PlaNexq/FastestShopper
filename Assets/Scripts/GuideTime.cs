@@ -16,11 +16,6 @@ public class GuideTime : MonoBehaviour
         button.SetActive(false);
     }
 
-    public void CallStartGame()
-    {
-        GameManager.Instance.StartGame();
-    }
-
     // Update is called once per frame
     void Update()
     {

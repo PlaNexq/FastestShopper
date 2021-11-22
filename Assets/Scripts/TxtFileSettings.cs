@@ -11,18 +11,12 @@ public class TxtFileSettings : MonoBehaviour
     
     //Number of item that will be enabled
     [SerializeField]
-    private int m_itemCount = 10;
+    private int m_itemCount = GameManager.Instance.GetShoppingListNumber();
 
     static private TextMeshProUGUI[] m_components;
 
     private Vector2 startPosition;
 
-    public int ItemCount {
-        get
-        {
-            return m_itemCount;
-        }
-    }
 
     private void Awake()
     {
@@ -38,8 +32,6 @@ public class TxtFileSettings : MonoBehaviour
         float width = ((RectTransform)transform).rect.width;
         float height = ((RectTransform)transform).rect.height;
         GetComponentInChildren<GridLayoutGroup>().cellSize = new Vector2((width - 2), ((height - 11) / m_itemCount));
-
-        ShoppingList.Initialize(m_itemCount);
 
 
         for (int i = 0; i < m_itemCount; i++)

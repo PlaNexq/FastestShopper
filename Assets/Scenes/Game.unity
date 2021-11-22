@@ -7854,7 +7854,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1797107551}
         m_TargetAssemblyTypeName: OnClick, Assembly-CSharp
-        m_MethodName: CallExit
+        m_MethodName: CallToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -5,19 +5,21 @@ using System;
 
 public class ShoppingList
 {
-    static int initializeTimesCount = 0;
 
-    //List of all products that you CAN buy
-    static private List<string> m_listOfProducts = new List<string>{ "Grand Dad", "Mario", "Win98 NES", 
-            "Panda Prince", "Konkey Dong", "Sonic the Hedgehog", "Blue Hedgehog", 
-            "Hungry Birds", "Wario", "Donkey Kong", "Godzilla Lamp (Only Blue)", 
+    static private List<string> m_ListOfProducts = new List<string>{ "Grand Dad", "Mario", "Win98 NES",
+            "Panda Prince", "Konkey Dong", "Sonic the Hedgehog", "Blue Hedgehog",
+            "Hungry Birds", "Wario", "Donkey Kong", "Godzilla Lamp (Only Blue)",
             "Unicorn Headphones", "Crocodile Watch", "Cap with Flashlight (Blue)",
             "Otamatone", "4-USB Charger", "Cap with Flashlight (Pink)",
             "Godzilla Lamp (Only Pink)", "Nano Gauntlet", "Unicorn Headphones (GOLD EDITION)",
             "Jam \"One Minute\"", "Smiley Cactus", "Gorilla Pillow", "Pasta Machine",
-            "Pickle Morty", "Pickle Rick", "Cat Shorts", "Floppa Pillow",  
+            "Pickle Morty", "Pickle Rick", "Cat Shorts", "Floppa Pillow",
             "SCP-173 Kigurumi", "Yo-Yo"
     };
+
+    //List of all products that you CAN buy
+    static private List<string> m_TempListOfProducts = null;
+
 
     //List of products that you NEED to buy
     static private List<string> m_shoppingList = new List<string>();
@@ -27,17 +29,13 @@ public class ShoppingList
 
     static public void Initialize(int numberOfItems)
     {
-        initializeTimesCount++;
-        if (initializeTimesCount > 1)
-        {
-            Debug.LogError(typeof(ShoppingList).Name + " was initialized more than once, check your code!");
-        }
+        m_TempListOfProducts = new List<string>(m_ListOfProducts);
 
         for (int i = 0; i < numberOfItems; ++i)
         {
-            int randomNumber = UnityEngine.Random.Range(0, m_listOfProducts.Count - 1);
-            m_shoppingList.Add(m_listOfProducts[randomNumber]);
-            m_listOfProducts.RemoveAt(randomNumber);
+            int randomNumber = UnityEngine.Random.Range(0, m_TempListOfProducts.Count - 1);
+            m_shoppingList.Add(m_TempListOfProducts[randomNumber]);
+            m_TempListOfProducts.RemoveAt(randomNumber);
 
             //Debug.Log("Item added: " + m_shoppingList[i]);
 
