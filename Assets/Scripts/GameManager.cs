@@ -9,7 +9,11 @@ public class GameManager : Singleton<GameManager>
     public event Action GameStarted, GameEnded;
 
     [SerializeField]
-    private float penalty = 3f;
+    private float m_penalty = 3f;
+    [SerializeField]
+    private int m_shoppingListItemsNumber = 8;
+
+
     private void Start()
     {
         StartMainMenu();
@@ -19,31 +23,23 @@ public class GameManager : Singleton<GameManager>
     {
         AudioManager.Instance.Play("MainMenuMusic");
     }
-
-    //Function to test Lists
-    public void Check()
-    {
-        if (ShoppingList.IsEqual())
-        {
-            Debug.Log("TRUE");
-        }
-        else
-        {
-            Debug.Log("FALSE");
-        }
-    }
+    
 
     public void StartGame()
     {
         LoadNextLevel();
+        InitShoppingList();
+        Timer.Instance.ResetTimer();
         GameStarted += Timer.Instance.StartTimer;
+        ShoppingList.GetCartList().Clear();
         GameStarted?.Invoke();
         AudioManager.Instance.Stop("MainMenuMusic");
-        AudioManager.Instance.Play("Main");
+        AudioManager.Instance.Play("GameMainMusic");
     }
     public void EndGame()
     {
-        GameEnded?.Invoke();
+        //GameEnded?.Invoke();
+        Timer.Instance.StopTimer();
         if (ShoppingList.IsEqual())
         {
             AudioManager.Instance.Play("WinSound");
@@ -51,13 +47,23 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            AudioManager.Instance.Stop("Main");
-            AudioManager.Instance.Play("Main");
-            Debug.Log("You Lose");
+            AudioManager.Instance.Restart("GameMainMusic");
             LoadLevel("Lose");
         }
     }
        
+
+    public int GetShoppingListNumber()
+    {
+        return m_shoppingListItemsNumber;
+    }
+
+    public void InitShoppingList()
+    {
+        ShoppingList.GetShoppingList().Clear();
+        ShoppingList.Initialize(m_shoppingListItemsNumber);
+    }
+
     public void Buy(string productName)
     {
 
@@ -71,13 +77,12 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            Timer.Instance.SetTime(Timer.Instance.CurrentTime - penalty);
+            Timer.Instance.SetTime(Timer.Instance.CurrentTime - m_penalty);
             AudioManager.Instance.Play("WrongSound");
         }
         if (ShoppingList.IsEqual())
         {
-            AudioManager.Instance.Play("WinSound");
-            LoadLevel("Win");
+            EndGame();
         }
 
         //Debug.Log("Product: " + productName + " was added to cart list");
@@ -101,6 +106,14 @@ public class GameManager : Singleton<GameManager>
     public void Dialogue()
     {
         AudioManager.Instance.Play("WrongSound");
+    }
+
+    public void LoadMainMenu()
+    {
+        ShoppingList.GetShoppingList().Clear();
+        AudioManager.Instance.Stop("GameMainMusic");
+        AudioManager.Instance.Play("MainMenuMusic");
+        LoadLevel("MainMenu");
     }
 
     public void LoadLevel(string levelName)

@@ -50,6 +50,12 @@ public class AudioManager : Singleton<AudioManager>
         s.source.Stop();
     }
 
+    public void Restart(string name)
+    {
+        Stop(name);
+        Play(name);
+    }
+
     /*
     private void InitializeManager()
     {

@@ -10,9 +10,19 @@ public class OnClick : MonoBehaviour
         
     }
 
+    public void CallStartGame()
+    {
+        GameManager.Instance.StartGame();
+    }
+
+    public void CallLoadNextLevel()
+    {
+        GameManager.Instance.LoadNextLevel();
+    }
+
     public void CallToMainMenu()
     {
-        GameManager.Instance.LoadLevel("MainMenu");
+        GameManager.Instance.LoadMainMenu();
     }
 
     public void CallExit()
