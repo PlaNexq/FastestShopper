@@ -62,7 +62,7 @@ public class GameManager : Singleton<GameManager>
     {
 
         //If product is in shopping list, then we change color of that item to green
-        if (ShoppingList.GetShoppingList().Contains(productName) && !ShoppingList.GetCarList().Contains(productName))
+        if (ShoppingList.GetShoppingList().Contains(productName) && !ShoppingList.GetCartList().Contains(productName))
         {
             Color green = new Color32(65, 178, 65, 255);
             TxtFileSettings.ChangeColorText(green, productName);
@@ -73,6 +73,11 @@ public class GameManager : Singleton<GameManager>
         {
             Timer.Instance.SetTime(Timer.Instance.CurrentTime - penalty);
             AudioManager.Instance.Play("WrongSound");
+        }
+        if (ShoppingList.IsEqual())
+        {
+            AudioManager.Instance.Play("WinSound");
+            LoadLevel("Win");
         }
 
         //Debug.Log("Product: " + productName + " was added to cart list");

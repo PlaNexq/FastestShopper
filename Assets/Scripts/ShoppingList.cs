@@ -64,7 +64,7 @@ public class ShoppingList
 
     }
 
-    static public List<string> GetCarList()
+    static public List<string> GetCartList()
     {
         return m_cartList;
     }
